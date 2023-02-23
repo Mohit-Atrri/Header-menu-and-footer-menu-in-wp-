@@ -1,0 +1,85 @@
+//function.php
+
+// add li class in menu 
+function atg_menu_classes($classes, $item, $args) {    
+// print_r($args);
+if($args->menu == 'Main') {
+$classes[] = 'nav-item';
+}else {
+$classes[] = '';
+}
+return $classes;
+}
+add_filter('nav_menu_css_class', 'atg_menu_classes', 1, 3);
+
+//end  add li class in menu 
+
+// add anchor tag class in menu
+
+function add_link_atts($atts, $item, $args) {
+// print_r($atts); 
+if($args->menu == 'Main') {
+$atts['class'] = "nav-link";
+}else {
+$atts['class'] = "text-white";   
+}
+return $atts;
+}
+add_filter( 'nav_menu_link_attributes', 'add_link_atts', 1, 3); 
+
+//end add anchor tag class in menu
+
+// custom footer logo
+function mm_theme_customizer( $wp_customize ) {
+$wp_customize->add_setting('upload_logo');
+
+  $wp_customize->add_control(
+    new WP_Customize_Image_Control( 
+      $wp_customize,
+      'upload_logo',
+      array(
+        'label' => 'Footer Logo',
+        'section' => 'title_tagline',
+        'settings' => 'upload_logo',
+        'transport' => 'postMessage'
+      )
+    )
+  );
+
+  $wp_customize->add_setting(
+    'upload_logo_width',
+    array(
+      'default' => '',
+      'sanitize_callback' => 'sanitize_text_field'
+    )
+  );
+
+  $wp_customize->add_control(
+    'upload_logo_width',
+    array(
+      'label' => 'Logo Max Width',
+      'section' => 'title_tagline',
+      'settings' => 'upload_logo_width',
+      'transport' => 'postMessage'
+    )
+  );
+}
+
+
+add_action('customize_register', 'mm_theme_customizer');
+
+// end of custom footer logo.
+
+
+
+//FOOTER.php
+//Add logo 
+
+<?php echo get_theme_mod( 'upload_logo' ); ?>
+
+
+//SOCIAL LINK CALL 
+<?php the_field('facebook_link','user_'. 1); ?>
+
+
+
