@@ -102,5 +102,41 @@ add_action('customize_register', 'mm_theme_customizer');
 //SOCIAL LINK CALL 
 <?php the_field('facebook_link','user_'. 1); ?>
 
+sidebar:-
 
+      
+ function wpb_widgets_init() {
+    register_sidebar( array(
+        'name' => __( 'Footer Text', 'wpb' ),
+        'id' => 'sidebar-1',
+        'description' => __( 'The main sidebar appears on the right on each page except the front page template', 'wpb' ),
+        'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+        'after_widget' => '</aside>',
+        'before_title' => '<h3 class="widget-title">',
+        'after_title' => '</h3>',
+    ) );
+      register_sidebar( array(
+        'name' => __( 'subheading', 'wpb' ),
+        'id' => 'subheading',
+        'description' => __( 'The main sidebar appears on the right on each page except the front page template', 'wpb' ),
+        'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+        'after_widget' => '</aside>',
+        'before_title' => '<h3 class="widget-title">',
+        'after_title' => '</h3>',
+    ) );
+    
+      register_sidebar( array(
+        'name' => __( 'Schedule Heading', 'wpb' ),
+        'id' => 'sidebar-2',
+        'description' => __( 'The main sidebar appears on the right on each page except the front page template', 'wpb' ),
+        'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+        'after_widget' => '</aside>',
+        'before_title' => '<h3 class="widget-title">',
+        'after_title' => '</h3>',
+    ) );
+ 
+ 
+    }
+ 
+add_action( 'widgets_init', 'wpb_widgets_init' );
 
