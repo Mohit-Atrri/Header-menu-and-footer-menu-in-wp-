@@ -1,3 +1,11 @@
+Header Logo Code:-
+<?php
+$custom_logo_id = get_theme_mod( 'custom_logo' );
+$image = wp_get_attachment_image_src( $custom_logo_id , 'full' );
+$site = site_url();
+echo '<a class="navbar-brand" href="'.$site.'"><img class="header_logo" src="'.$image[0].'"></a>';
+?> 
+Get Menu Code :-
   <?php
     wp_nav_menu(
         array(
