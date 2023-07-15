@@ -140,3 +140,6 @@ sidebar:-
  
 add_action( 'widgets_init', 'wpb_widgets_init' );
 
+ <?php if ( is_active_sidebar( 'subheading' ) ) : ?>
+                <?php dynamic_sidebar( 'subheading' ); ?>
+                <?php endif; ?>
